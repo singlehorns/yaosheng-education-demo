@@ -8,7 +8,7 @@
   <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
   <link rel="stylesheet" href="css/design-tokens.css">
   <link rel="stylesheet" href="css/components.css">
-  <link rel="stylesheet" href="css/demo-start.css">
+  <link rel="stylesheet" href="css/demo-start.css?v=20260724-flow-images">
 </head>
 <body>
   <header class="demo-hero">
@@ -35,6 +35,7 @@
         <div class="hero-actions">
           <button class="primary-button" id="seedButton" type="button">一鍵建立完整 Demo 資料</button>
           <button class="secondary-button" id="resetButton" type="button">重置 Demo 資料</button>
+          <button class="flow-map-button" type="button" data-flow-open>查看系統流程圖</button>
         </div>
         <div class="status-box" id="demoStatus" aria-live="polite"></div>
       </div>
@@ -154,6 +155,46 @@
       </div>
     </section>
 
+    <section class="section system-flow-section">
+      <div class="section-heading">
+        <span class="eyebrow">SYSTEM MAP</span>
+        <h2>系統樹狀流程圖</h2>
+        <p>以角色權限、頁面入口與 Demo 資料表為主軸，點擊按鈕以彈出視窗查看完整角色與流程關係。</p>
+      </div>
+
+      <button class="flow-map-button" type="button" data-flow-open>查看系統流程圖</button>
+
+      <dialog class="flow-map-dialog" id="flowMapDialog" aria-labelledby="flowMapDialogTitle">
+        <div class="flow-map-modal">
+          <div class="flow-map-modal-header">
+            <div>
+              <span class="eyebrow">SYSTEM MAP</span>
+              <h2 id="flowMapDialogTitle">系統樹狀流程圖</h2>
+            </div>
+            <button class="flow-map-close" type="button" data-flow-close aria-label="關閉流程圖">×</button>
+          </div>
+
+          <div class="flow-image-viewer" data-flow-viewer>
+            <figure class="flow-image-slide is-active" data-flow-slide>
+              <img src="assets/images/system-flow%20(1).png" alt="系統樹狀流程圖 1">
+            </figure>
+            <figure class="flow-image-slide" data-flow-slide>
+              <img src="assets/images/system-flow%20(2).png" alt="系統樹狀流程圖 2">
+            </figure>
+            <figure class="flow-image-slide" data-flow-slide>
+              <img src="assets/images/system-flow%20(3).png" alt="系統樹狀流程圖 3">
+            </figure>
+            <div class="flow-image-controls" aria-label="流程圖切換">
+              <button type="button" data-flow-prev>上一張</button>
+              <span data-flow-counter>1 / 3</span>
+              <button type="button" data-flow-next>下一張</button>
+            </div>
+          </div>
+        </div>
+      </dialog>
+
+    </section>
+
     <section class="section">
       <div class="section-heading">
         <span class="eyebrow">SUGGESTED ROUTE</span>
@@ -191,6 +232,6 @@
 
   <script src="js/auth.js"></script>
   <script src="js/academic-data.js?v=20260724-academic-data"></script>
-  <script src="js/demo-start.js"></script>
+  <script src="js/demo-start.js?v=20260724-flow-images"></script>
 </body>
 </html>

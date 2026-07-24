@@ -1,14 +1,13 @@
 .admin-shell {
-  min-height: 100vh;
   display: grid;
   grid-template-columns: 270px minmax(0, 1fr);
-  background: #f3f3f3;
+  background: linear-gradient(90deg, #1d3779 0 270px, #f3f3f3 270px 100%);
 }
 
 .sidebar {
   position: sticky;
   top: 0;
-  height: 100vh;
+  align-self: stretch;
   overflow-y: auto;
   display: flex;
   flex-direction: column;

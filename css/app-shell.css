@@ -21,15 +21,15 @@
 }
 
 .app-shell {
-  min-height: 100vh;
   display: grid;
   grid-template-columns: 270px minmax(0, 1fr);
+  background: linear-gradient(90deg, #1d3779 0 270px, var(--app-bg) 270px 100%);
 }
 
 .app-sidebar {
   position: sticky;
   top: 0;
-  height: 100vh;
+  align-self: stretch;
   display: flex;
   flex-direction: column;
   overflow-y: auto;

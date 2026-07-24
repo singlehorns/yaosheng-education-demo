@@ -368,7 +368,6 @@ body {
 
 /* Unified admin visual language */
 body,
-.admin-shell,
 .admin-main,
 .admin-content,
 .app-workspace {
@@ -785,12 +784,14 @@ td {
   .admin-shell {
     display: grid !important;
     grid-template-columns: 270px minmax(0, 1fr) !important;
+    background: linear-gradient(90deg, #1d3779 0 270px, #f3f3f3 270px 100%) !important;
   }
 
   .sidebar {
     position: sticky !important;
     inset: auto !important;
     width: auto !important;
+    align-self: stretch !important;
     transform: none !important;
   }
 

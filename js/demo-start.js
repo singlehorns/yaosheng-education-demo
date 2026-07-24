@@ -33,8 +33,12 @@
     seedButton: document.getElementById("seedButton"),
     resetButton: document.getElementById("resetButton"),
     status: document.getElementById("demoStatus"),
-    roleMessage: document.getElementById("roleMessage")
+    roleMessage: document.getElementById("roleMessage"),
+    flowDialog: document.getElementById("flowMapDialog")
   };
+  const flowSlides = Array.from(document.querySelectorAll("[data-flow-slide]"));
+  const flowCounter = document.querySelector("[data-flow-counter]");
+  let flowSlideIndex = 0;
 
   function now() {
     return new Date().toISOString();
@@ -268,6 +272,17 @@
     location.href = account[2];
   }
 
+  function updateFlowSlide(nextIndex) {
+    if (!flowSlides.length) return;
+    flowSlideIndex = (nextIndex + flowSlides.length) % flowSlides.length;
+    flowSlides.forEach(function (slide, index) {
+      slide.classList.toggle("is-active", index === flowSlideIndex);
+    });
+    if (flowCounter) {
+      flowCounter.textContent = String(flowSlideIndex + 1) + " / " + String(flowSlides.length);
+    }
+  }
+
   els.seedButton.addEventListener("click", function () {
     resetAndSeedDemoData("Demo資料已準備完成");
     els.roleMessage.textContent = "Demo資料已準備完成，請選擇角色開始體驗。";
@@ -281,11 +296,36 @@
   });
 
   document.addEventListener("click", function (event) {
+    if (event.target.closest("[data-flow-open]")) {
+      if (els.flowDialog && typeof els.flowDialog.showModal === "function") {
+        els.flowDialog.showModal();
+      }
+      return;
+    }
+    if (event.target.closest("[data-flow-close]")) {
+      if (els.flowDialog) els.flowDialog.close();
+      return;
+    }
+    if (event.target.closest("[data-flow-prev]")) {
+      updateFlowSlide(flowSlideIndex - 1);
+      return;
+    }
+    if (event.target.closest("[data-flow-next]")) {
+      updateFlowSlide(flowSlideIndex + 1);
+      return;
+    }
     const button = event.target.closest("[data-role-login]");
     if (!button) return;
     quickLogin(button.dataset.roleLogin);
   });
 
+  if (els.flowDialog) {
+    els.flowDialog.addEventListener("click", function (event) {
+      if (event.target === els.flowDialog) els.flowDialog.close();
+    });
+  }
+
   window.resetAndSeedDemoData = resetAndSeedDemoData;
+  updateFlowSlide(0);
   updateStatus();
 })();
