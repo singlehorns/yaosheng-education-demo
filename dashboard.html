@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>珠心學苑＋營運儀表板 Demo</title>
+  <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="css/admin.css">
+  <link rel="stylesheet" href="css/design-tokens.css">
+  <link rel="stylesheet" href="css/layout.css">
+  <link rel="stylesheet" href="css/components.css">
+  <link rel="stylesheet" href="css/admin-theme.css">
+</head>
+<body>
+  <div class="admin-shell">
+    <aside class="sidebar" id="sidebar">
+      <a class="sidebar-brand" href="dashboard.html"><strong>珠心學苑＋</strong><span>管理平台 Demo</span></a>
+      <nav class="sidebar-nav" aria-label="管理平台選單"></nav>
+    </aside>
+    <main class="admin-main">
+      <header class="admin-topbar">
+        <button class="menu-toggle" id="menuToggle" type="button" aria-label="開啟選單" aria-expanded="false">☰</button>
+        <div>
+          <span class="eyebrow">DASHBOARD</span>
+          <h1>營運儀表板</h1>
+          <p>依目前登入角色顯示可查看的 Demo 資訊。</p>
+        </div>
+      </header>
+      <section class="dashboard-grid" id="metricGrid" aria-label="統計資訊"></section>
+      <section class="dashboard-insights" id="insightGrid" aria-label="近期資訊"></section>
+      <section class="panel">
+        <div class="panel-heading">
+          <div>
+            <span class="eyebrow">SHORTCUTS</span>
+            <h2>快速入口</h2>
+          </div>
+        </div>
+        <div class="quick-link-grid" id="quickLinks"></div>
+      </section>
+      <section class="demo-note">
+        本系統為求職作品Demo。資料、登入狀態與權限判斷皆存在目前瀏覽器中，不代表正式系統安全性。請勿輸入真實帳號、密碼或學生個資。
+      </section>
+    </main>
+  </div>
+  <script src="js/auth.js"></script>
+  <script src="js/academic-data.js?v=20260724-academic-data"></script>
+  <script src="js/dashboard.js"></script>
+</body>
+</html>

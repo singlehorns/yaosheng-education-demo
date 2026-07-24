@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>珠心學苑＋帳號權限 Demo</title>
+  <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="css/admin.css">
+  <link rel="stylesheet" href="css/design-tokens.css">
+  <link rel="stylesheet" href="css/layout.css">
+  <link rel="stylesheet" href="css/components.css">
+  <link rel="stylesheet" href="css/admin-theme.css">
+</head>
+<body>
+  <div class="admin-shell">
+    <aside class="sidebar" id="sidebar">
+      <a class="sidebar-brand" href="accounts.html"><strong>珠心學苑＋</strong><span>帳號權限 Demo</span></a>
+      <nav class="sidebar-nav" aria-label="帳號權限選單"></nav>
+    </aside>
+    <main class="admin-main">
+      <header class="admin-topbar">
+        <button class="menu-toggle" id="menuToggle" type="button" aria-label="開啟選單" aria-expanded="false">☰</button>
+        <div>
+          <span class="eyebrow">ACCOUNTS</span>
+          <h1>帳號權限管理</h1>
+          <p>管理本機 Demo 帳號、角色與老師/學生連結。</p>
+        </div>
+      </header>
+      <section class="toolbar">
+        <input id="searchInput" type="search" placeholder="搜尋姓名、Email">
+        <select id="roleFilter"><option value="">全部角色</option><option value="admin">管理員</option><option value="admissions">招生人員</option><option value="teacher">老師</option><option value="student">學生</option></select>
+        <button class="btn-secondary" id="refreshDemo" type="button">刷新 Demo 連結</button>
+      </section>
+      <section class="panel">
+        <div class="panel-heading">
+          <div><span class="eyebrow">CREATE</span><h2>新增帳號</h2></div>
+        </div>
+        <form class="compact-form" id="accountForm">
+          <label>顯示名稱<input id="displayName" required></label>
+          <label>Email<input id="accountEmail" type="email" required></label>
+          <label>角色<select id="accountRole"><option value="admissions">招生人員</option><option value="teacher">老師</option><option value="student">學生</option></select></label>
+          <label>Demo PIN<input id="accountPin" inputmode="numeric" required></label>
+          <label id="linkField">連結對象<select id="linkedId"></select></label>
+          <button class="btn-primary" type="submit">建立帳號</button>
+        </form>
+      </section>
+      <section class="panel">
+        <div class="panel-heading"><div><span class="eyebrow">USERS</span><h2>帳號清單</h2></div></div>
+        <div class="responsive-table">
+          <table><thead><tr><th>姓名</th><th>Email</th><th>角色</th><th>狀態</th><th>連結</th><th>操作</th></tr></thead><tbody id="tableBody"></tbody></table>
+        </div>
+      </section>
+      <p class="toast" id="liveMessage" aria-live="polite"></p>
+      <section class="demo-note">
+        本系統為求職作品Demo。資料、登入狀態與權限判斷皆存在目前瀏覽器中，不代表正式系統安全性。請勿輸入真實帳號、密碼或學生個資。
+      </section>
+    </main>
+  </div>
+  <script src="js/auth.js"></script>
+  <script src="js/academic-data.js?v=20260724-academic-data"></script>
+  <script src="js/accounts.js"></script>
+</body>
+</html>

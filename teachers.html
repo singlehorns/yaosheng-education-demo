@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>珠心學苑＋老師管理 Demo</title>
+  <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="css/admin.css?v=20260724-academic-admin">
+  <link rel="stylesheet" href="css/design-tokens.css">
+  <link rel="stylesheet" href="css/layout.css">
+  <link rel="stylesheet" href="css/components.css">
+  <link rel="stylesheet" href="css/admin-theme.css">
+</head>
+<body>
+  <div class="admin-shell">
+    <aside class="sidebar" id="sidebar">
+      <a class="sidebar-brand" href="teachers.html"><strong>珠心學苑＋</strong><span>老師管理 Demo</span></a>
+      <nav class="sidebar-nav" aria-label="老師管理選單">
+        <a href="#dashboard">儀表板</a><a href="leads.html">招生名單</a><a href="students.html">學生管理</a>
+        <a class="is-active" href="teachers.html">老師管理</a><a href="courses.html">課程管理</a><a href="classes.html">班級管理</a>
+        <button type="button" data-coming-soon>帳號管理<span>下一階段</span></button><a href="ailead-demo.html">回到招生首頁</a>
+      </nav>
+    </aside>
+    <div class="admin-content">
+      <header class="topbar"><button class="menu-toggle" id="menuToggle" type="button" aria-controls="sidebar" aria-expanded="false">選單</button><div><p class="eyebrow">Teacher Management</p><h1>珠心學苑＋老師管理 Demo</h1><p class="demo-notice">本頁為求職作品展示。資料僅儲存在目前瀏覽器 localStorage，不包含正式登入或正式資料庫。</p></div></header>
+      <main class="admin-main" id="dashboard">
+        <section class="metrics" aria-label="老師統計"><article><span id="totalCount">0</span><p>全部老師</p></article><article><span id="activeCount">0</span><p>在職老師</p></article><article><span id="leaveCount">0</span><p>暫停授課</p></article><article><span id="unassignedCount">0</span><p>尚未指派班級</p></article></section>
+        <section class="panel"><div class="panel-heading"><div><p class="eyebrow">Teachers</p><h2>老師列表</h2></div><div class="panel-actions"><button id="seedDemo" type="button">建立 Demo 範例資料</button><button id="newItem" type="button">新增老師</button><button id="exportCsv" type="button">匯出 CSV</button></div></div>
+          <div class="toolbar"><label>搜尋<input id="searchInput" type="search" placeholder="老師姓名、電話、Email"></label><label>專長<select id="specialtyFilter"><option value="">全部專長</option></select></label><label>任職狀態<select id="statusFilter"><option value="">全部狀態</option></select></label><button id="clearFilters" type="button">清除篩選</button></div>
+          <p class="result-count" id="resultCount" aria-live="polite">目前顯示 0 筆</p><div class="table-wrap"><table aria-label="老師列表"><caption>老師資料管理</caption><thead><tr><th>老師編號</th><th>姓名</th><th>電話</th><th>Email</th><th>教學專長</th><th>負責班級數</th><th>任職狀態</th><th>建立日期</th><th>操作</th></tr></thead><tbody id="tableBody"></tbody></table></div>
+          <div id="emptyState" class="empty-state" hidden><h2>目前沒有老師資料</h2><p>請新增老師或建立 Demo 範例資料。</p></div><div id="noResultState" class="empty-state" hidden><h2>找不到符合條件的老師。</h2></div>
+        </section>
+      </main>
+    </div>
+  </div>
+  <div class="drawer-backdrop" id="drawerBackdrop" hidden></div>
+  <aside class="lead-drawer" id="drawer" role="dialog" aria-modal="true" aria-labelledby="drawerTitle" hidden>
+    <form id="itemForm"><div class="drawer-header"><div><p class="eyebrow">Teacher Detail</p><h2 id="drawerTitle">老師資料</h2></div><button class="icon-button" id="closeDrawer" type="button" aria-label="關閉">×</button></div>
+      <div class="drawer-body"><input type="hidden" id="itemId"><section class="detail-section"><h3>基本資料</h3><div class="form-grid"><label>老師姓名<input id="teacherName" required></label><label>電話<input id="phone"></label><label>Email<input id="email" type="email"></label><label>任職狀態<select id="employmentStatus"></select></label></div><fieldset class="checkbox-field"><legend>教學專長</legend><div id="specialtyChecks" class="checkbox-list"></div></fieldset><label>教師介紹<textarea id="introduction" maxlength="500" rows="4"></textarea></label><p class="char-note"><span id="introCount">0</span> / 500</p><label>內部備註<textarea id="internalNote" maxlength="1000" rows="5"></textarea></label><p class="char-note"><span id="noteCount">0</span> / 1000</p><p class="form-error" id="formError" aria-live="polite"></p></section><section class="detail-section"><h3>目前負責班級</h3><div id="classList" class="detail-list"></div></section></div>
+      <div class="drawer-footer"><button type="button" class="secondary-button" id="cancelDrawer">取消</button><button type="submit">儲存</button></div></form>
+  </aside>
+  <div class="toast" id="liveMessage" aria-live="polite" aria-atomic="true"></div>
+  <script src="js/auth.js"></script><script src="js/academic-data.js?v=20260724-academic-data"></script><script src="js/teachers.js?v=20260724-auth"></script>
+</body>
+</html>

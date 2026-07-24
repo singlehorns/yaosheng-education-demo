@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>珠心學苑＋老師入口 Demo</title>
+  <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="css/admin.css">
+  <link rel="stylesheet" href="css/portal.css">
+  <link rel="stylesheet" href="css/design-tokens.css">
+  <link rel="stylesheet" href="css/layout.css">
+  <link rel="stylesheet" href="css/components.css">
+  <link rel="stylesheet" href="css/admin-theme.css">
+  <link rel="stylesheet" href="css/portal-theme.css">
+</head>
+<body>
+  <div class="admin-shell">
+    <aside class="sidebar" id="sidebar">
+      <a class="sidebar-brand" href="teacher-portal.html"><strong>珠心學苑＋</strong><span>老師入口 Demo</span></a>
+      <nav class="sidebar-nav" aria-label="老師入口選單"></nav>
+    </aside>
+    <main class="admin-main">
+      <header class="admin-topbar">
+        <button class="menu-toggle" id="menuToggle" type="button" aria-label="開啟選單" aria-expanded="false">☰</button>
+        <div>
+          <span class="eyebrow">TEACHER PORTAL</span>
+          <h1>老師入口</h1>
+          <p>僅顯示目前登入老師負責的班級與學生。</p>
+        </div>
+      </header>
+      <section class="portal-warning">
+        本系統為求職作品Demo。資料、登入狀態與權限判斷皆存在目前瀏覽器中，不代表正式系統安全性。請勿輸入真實帳號、密碼或學生個資。
+      </section>
+      <section class="portal-panel" id="portalContent"></section>
+    </main>
+  </div>
+  <script src="js/auth.js"></script>
+  <script src="js/academic-data.js?v=20260724-academic-data"></script>
+  <script src="js/teacher-portal.js"></script>
+</body>
+</html>

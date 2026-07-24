@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>珠心學苑＋ Demo 登入</title>
+  <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="css/design-tokens.css">
+  <link rel="stylesheet" href="css/components.css">
+  <link rel="stylesheet" href="css/login.css">
+</head>
+<body>
+  <main class="login-page">
+    <header class="login-header">
+      <a class="brand" href="index.html">
+        <img src="assets/favicon.svg" alt="" aria-hidden="true">
+        <span><strong>珠心學苑＋</strong>招生管理平台 Demo</span>
+      </a>
+      <a class="ghost-button" href="index.html">回到 Demo 導覽</a>
+    </header>
+
+    <section class="demo-warning">
+      本系統為求職作品Demo。資料、登入狀態與權限判斷皆存在目前瀏覽器中，不代表正式系統安全性。請勿輸入真實帳號、密碼或學生個資。
+    </section>
+
+    <section class="login-grid">
+      <div class="login-card">
+        <span class="eyebrow">Demo Login</span>
+        <h1>登入入口</h1>
+        <form id="loginForm">
+          <label>
+            Email
+            <input id="email" name="email" type="email" autocomplete="username" required>
+          </label>
+          <label>
+            Demo PIN
+            <input id="demoPin" name="demoPin" type="password" inputmode="numeric" autocomplete="current-password" required>
+          </label>
+          <p class="login-error" id="loginError" aria-live="polite"></p>
+          <button class="primary-button" type="submit">登入 Demo</button>
+        </form>
+        <section class="session-box" id="sessionBox">
+          <p id="sessionText"></p>
+          <div class="session-actions">
+            <button class="primary-button" id="continueButton" type="button">繼續使用</button>
+            <button class="ghost-button" id="logoutButton" type="button">登出並切換</button>
+          </div>
+        </section>
+      </div>
+
+      <section>
+        <span class="eyebrow">Quick Accounts</span>
+        <h1>角色帳號</h1>
+        <div class="account-grid" id="accountCards"></div>
+      </section>
+    </section>
+  </main>
+  <script src="js/auth.js"></script>
+  <script src="js/login.js"></script>
+</body>
+</html>

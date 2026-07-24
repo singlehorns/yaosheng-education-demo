@@ -1,0 +1,43 @@
+.portal-panel {
+  display: grid;
+  gap: 18px;
+}
+
+.portal-warning {
+  border: 1px solid #c9dced;
+  border-radius: 8px;
+  padding: 16px 18px;
+  background: #eef7fd;
+  color: #344054;
+  font-weight: 800;
+}
+
+.portal-card {
+  border: 1px solid #c9dced;
+  border-radius: 8px;
+  background: #fff;
+  padding: 22px;
+}
+
+.portal-card h2 {
+  margin-top: 0;
+  color: #272487;
+}
+
+.portal-list {
+  display: grid;
+  gap: 12px;
+}
+
+.portal-row {
+  border: 1px solid #d7e6f2;
+  border-radius: 8px;
+  padding: 16px;
+  background: #fbfdff;
+}
+
+.portal-row strong {
+  display: block;
+  color: #101828;
+  margin-bottom: 6px;
+}

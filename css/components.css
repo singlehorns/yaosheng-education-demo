@@ -1,0 +1,168 @@
+a,
+button,
+input,
+select,
+textarea {
+  transition: border-color var(--transition), background var(--transition), color var(--transition), box-shadow var(--transition), transform var(--transition);
+}
+
+button:focus-visible,
+a:focus-visible,
+input:focus,
+select:focus,
+textarea:focus {
+  outline: 4px solid rgba(143, 211, 255, .42);
+  outline-offset: 3px;
+}
+
+.btn-primary,
+.primary-button,
+button[type="submit"],
+.card-button,
+.quick-link-card {
+  border-radius: var(--radius-md);
+}
+
+.btn-primary,
+button[type="submit"] {
+  border: 1px solid var(--brand-primary);
+  background: var(--brand-primary);
+  color: #fff;
+}
+
+.btn-secondary,
+.secondary-button,
+.ghost-button {
+  border: 1px solid var(--border-soft);
+  background: #fff;
+  color: var(--brand-primary);
+}
+
+button:disabled,
+[aria-disabled="true"] {
+  opacity: .56;
+  cursor: not-allowed;
+}
+
+.panel,
+.stat-card,
+.quick-link-card,
+.demo-note,
+.portal-card,
+.toolbar,
+.detail-section,
+.conversion-modal,
+.drawer,
+.student-picker-modal,
+.class-drawer,
+.role-card,
+.flow-list article,
+.hero-panel,
+.login-card,
+.account-card,
+.demo-warning {
+  border: 1px solid var(--border-soft) !important;
+  border-radius: var(--radius-lg) !important;
+  background: var(--bg-card) !important;
+  box-shadow: var(--shadow-soft) !important;
+}
+
+input,
+select,
+textarea {
+  min-height: 48px;
+  border: 1px solid var(--border-soft) !important;
+  border-radius: var(--radius-md) !important;
+  background: #fff;
+  color: var(--text-main);
+}
+
+label {
+  color: var(--brand-primary);
+  font-weight: 900;
+}
+
+table {
+  width: 100%;
+  border-collapse: separate;
+  border-spacing: 0;
+}
+
+thead th {
+  background: var(--bg-soft);
+  color: #53647f;
+  font-size: 13px;
+  letter-spacing: 0;
+  font-weight: 800;
+}
+
+tbody tr {
+  background: #fff;
+}
+
+tbody tr:hover {
+  background: #fbfdff;
+}
+
+th,
+td {
+  border-bottom: 1px solid var(--border-soft);
+  padding: 14px 16px;
+  color: var(--text-body);
+  font-size: 14px;
+}
+
+.status-badge,
+.badge,
+[class*="status-"] {
+  border-radius: 999px !important;
+  padding: 6px 10px !important;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: var(--font-xs);
+  font-weight: 1000;
+}
+
+.status-new,
+.status-open,
+.status-active {
+  background: #eaf7ff !important;
+  color: #075985 !important;
+}
+
+.status-contacted,
+.status-pending_contact,
+.status-trial_booked {
+  background: #fff7d6 !important;
+  color: #854d0e !important;
+}
+
+.status-enrolled,
+.status-in_progress,
+.status-completed {
+  background: #dcfce7 !important;
+  color: #166534 !important;
+}
+
+.status-paused,
+.status-withdrawn,
+.status-cancelled,
+.status-archived,
+.status-not_interested {
+  background: #fee2e2 !important;
+  color: #991b1b !important;
+}
+
+.empty-state,
+.no-result-state {
+  min-height: 220px;
+  border: 1px dashed var(--border-soft);
+  border-radius: var(--radius-lg);
+  display: grid;
+  place-items: center;
+  padding: var(--space-8);
+  color: var(--text-muted);
+  background: #fbfdff;
+  text-align: center;
+}

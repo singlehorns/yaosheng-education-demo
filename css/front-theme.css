@@ -1,0 +1,41 @@
+.topbar {
+  background: rgba(255, 255, 255, .92) !important;
+  box-shadow: 0 16px 38px rgba(11, 31, 94, .1) !important;
+}
+
+.brand-mark {
+  color: var(--brand-primary) !important;
+}
+
+.nav-links a {
+  border-radius: 999px;
+}
+
+.hero-stage {
+  background:
+    radial-gradient(circle at top right, rgba(255, 211, 42, .34), transparent 28%),
+    linear-gradient(135deg, #f8fbff 0%, #eef5fb 100%) !important;
+}
+
+.floating-service {
+  background: var(--brand-primary) !important;
+  border-radius: 20px !important;
+}
+
+.btn,
+button,
+input,
+select,
+textarea {
+  border-radius: var(--radius-md);
+}
+
+.btn-primary {
+  background: var(--brand-primary) !important;
+  color: #fff !important;
+}
+
+.btn-secondary {
+  border-color: var(--brand-primary) !important;
+  color: var(--brand-primary) !important;
+}

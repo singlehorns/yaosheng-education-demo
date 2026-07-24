@@ -1,0 +1,319 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>招生名單｜珠心學苑＋教育平台 Demo</title>
+  <meta name="description" content="珠心學苑＋教育平台 Demo 的招生名單管理頁，展示搜尋、篩選、追蹤、轉正式學生與 CSV 匯出流程。">
+  <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="css/design-tokens.css">
+  <link rel="stylesheet" href="css/components.css">
+  <link rel="stylesheet" href="css/admin-theme.css">
+  <link rel="stylesheet" href="css/app-shell.css">
+</head>
+<body class="app-page">
+  <div class="app-shell">
+    <aside class="app-sidebar sidebar" id="sidebar" aria-label="珠心學苑＋平台導覽">
+      <a class="app-sidebar-brand" href="dashboard.html" aria-label="珠心學苑＋教育平台">
+        <span class="app-logo" aria-hidden="true"><span>珠</span><b>＋</b></span>
+        <span>
+          <strong class="app-brand-title">珠心學苑＋</strong>
+          <span class="app-brand-subtitle">心算教育平台</span>
+        </span>
+      </a>
+
+      <nav class="sidebar-nav" aria-label="主要導航">
+        <a href="dashboard.html">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 10.8 12 3l9 7.8V21h-6v-6H9v6H3Z"/></svg>
+          <span>系統首頁</span>
+        </a>
+        <a class="is-active" href="leads.html">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 5h14v14H5Z"/><path d="M8 9h8M8 13h5"/></svg>
+          <span>招生名單</span>
+        </a>
+        <a href="students.html">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 12a4 4 0 1 0 0-8 4 4 0 0 0 0 8Z"/><path d="M4 21a8 8 0 0 1 16 0"/></svg>
+          <span>學生管理</span>
+        </a>
+        <a href="teachers.html">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 6.5 12 3l8 3.5-8 3.5Z"/><path d="M6 10v5c0 2 3 4 6 4s6-2 6-4v-5"/></svg>
+          <span>老師管理</span>
+        </a>
+        <a href="courses.html">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 4h11a2 2 0 0 1 2 2v14H7a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2Z"/><path d="M8 8h8M8 12h6"/></svg>
+          <span>課程管理</span>
+        </a>
+        <a href="classes.html">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 5h16v14H4Z"/><path d="M8 5v14M16 5v14M4 11h16"/></svg>
+          <span>班級管理</span>
+        </a>
+        <a href="accounts.html">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 15a3 3 0 1 0 0-6 3 3 0 0 0 0 6Z"/><path d="M19.4 15a8 8 0 0 0 0-6M4.6 9a8 8 0 0 0 0 6M7 21h10"/></svg>
+          <span>帳號管理</span>
+        </a>
+        <a href="index.html">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 6 3 12l6 6"/><path d="M3 12h14a4 4 0 0 1 0 8"/></svg>
+          <span>Demo導覽</span>
+        </a>
+      </nav>
+
+      <div class="app-sidebar-footer">
+        <button type="button" data-auth-logout>
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M15 8 19 12l-4 4"/><path d="M19 12H8"/><path d="M11 4H5v16h6"/></svg>
+          <span>登出帳號</span>
+        </button>
+        <button class="language-pill" type="button">
+          <span>繁體中文</span>
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>
+        </button>
+        <div class="app-sidebar-meta">
+          <strong>Demo / zh-TW</strong>
+          <span id="sidebarTime">2026/07/24 04:30 PM</span>
+          <span>(UTC+08:00)</span>
+        </div>
+      </div>
+    </aside>
+
+    <div class="app-workspace">
+      <header class="app-topbar">
+        <button class="sidebar-collapse-tab" type="button" aria-label="收合側欄">‹</button>
+        <button class="app-menu-toggle menu-toggle" id="menuToggle" type="button" aria-controls="sidebar" aria-expanded="false" aria-label="開啟選單">☰</button>
+        <div class="app-page-title">
+          <span class="app-page-icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24"><path d="M5 5h14v14H5Z"/><path d="M8 9h8M8 13h5"/></svg>
+          </span>
+          <div>
+            <h1>招生名單</h1>
+            <p>管理課程諮詢與後續聯絡狀態</p>
+          </div>
+        </div>
+        <section class="app-topbar-user" aria-label="目前登入使用者">
+          <button class="app-icon-button" type="button" aria-label="Demo 通知">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M18 16v-5a6 6 0 0 0-12 0v5l-2 2h16Z"/><path d="M10 20h4"/></svg>
+          </button>
+          <span class="app-user-avatar" aria-hidden="true">陳</span>
+          <span>
+            <strong class="app-user-name">陳招生顧問</strong>
+            <span class="app-user-role">招生人員</span>
+          </span>
+          <button class="app-icon-button app-logout-button" type="button" data-auth-logout aria-label="登出">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M15 8 19 12l-4 4"/><path d="M19 12H8"/><path d="M11 4H5v16h6"/></svg>
+          </button>
+        </section>
+      </header>
+
+      <main class="app-main">
+        <section class="app-alert" id="demoAlert">
+          <span>本頁為求職作品 Demo，資料僅儲存在目前瀏覽器。</span>
+          <button type="button" id="closeDemoAlert" aria-label="關閉提示">×</button>
+        </section>
+
+        <section class="lead-metrics" aria-label="招生名單統計">
+          <article class="metric-card">
+            <span class="metric-icon" aria-hidden="true">□</span>
+            <div>
+              <span id="totalCount">0</span>
+              <p>全部名單</p>
+            </div>
+          </article>
+          <article class="metric-card is-accent">
+            <span class="metric-icon" aria-hidden="true">＋</span>
+            <div>
+              <span id="newCount">0</span>
+              <p>新名單</p>
+            </div>
+          </article>
+          <article class="metric-card">
+            <span class="metric-icon" aria-hidden="true">◷</span>
+            <div>
+              <span id="followCount">0</span>
+              <p>待追蹤</p>
+            </div>
+          </article>
+          <article class="metric-card">
+            <span class="metric-icon" aria-hidden="true">✓</span>
+            <div>
+              <span id="enrolledCount">0</span>
+              <p>已報名</p>
+            </div>
+          </article>
+        </section>
+
+        <section class="lead-card" id="leadPanel" aria-labelledby="leadPanelTitle">
+          <div class="lead-card-header">
+            <div>
+              <h2 id="leadPanelTitle">招生名單</h2>
+              <p>管理課程諮詢與後續聯絡狀態</p>
+            </div>
+            <div class="lead-card-actions">
+              <button id="refreshButton" type="button">重新整理</button>
+              <button id="exportCsv" type="button">匯出 CSV</button>
+            </div>
+          </div>
+
+          <div class="lead-toolbar toolbar" aria-label="搜尋與篩選">
+            <label>關鍵字
+              <input type="search" id="searchInput" placeholder="名單編號、姓名、電話、Email、學校">
+            </label>
+            <label>狀態
+              <select id="statusFilter">
+                <option value="">全部狀態</option>
+              </select>
+            </label>
+            <label>級段
+              <select id="programFilter">
+                <option value="">全部級段</option>
+              </select>
+            </label>
+            <label>負責人
+              <select id="assigneeFilter">
+                <option value="">全部負責人</option>
+              </select>
+            </label>
+            <button id="clearFilters" type="button">清除篩選</button>
+          </div>
+
+          <p class="result-count" id="resultCount" aria-live="polite">目前顯示 0 筆</p>
+
+          <div class="table-wrap">
+            <table class="lead-table" aria-label="珠心算招生名單列表">
+              <caption>珠心算招生名單，可查看詳情、快速修改狀態或刪除資料。</caption>
+              <thead>
+                <tr>
+                  <th>名單編號</th>
+                  <th>建立時間</th>
+                  <th>姓名</th>
+                  <th>年級</th>
+                  <th>想培養的能力</th>
+                  <th>想了解的級段</th>
+                  <th>聯絡電話</th>
+                  <th>負責人</th>
+                  <th>狀態</th>
+                  <th>操作</th>
+                </tr>
+              </thead>
+              <tbody id="leadTable"></tbody>
+            </table>
+          </div>
+
+          <div id="emptyState" class="empty-state" hidden>
+            <h2>目前沒有招生名單</h2>
+            <p>請先前往招生表單建立一筆 Demo 諮詢資料。</p>
+            <a href="ailead-demo.html#consult">前往招生表單</a>
+          </div>
+
+          <div id="noResultState" class="empty-state" hidden>
+            <h2>找不到符合條件的招生名單</h2>
+            <p>請調整關鍵字或篩選條件後再試一次。</p>
+          </div>
+        </section>
+      </main>
+    </div>
+  </div>
+
+  <div class="drawer-backdrop" id="drawerBackdrop" hidden></div>
+  <aside class="lead-drawer" id="leadDrawer" aria-labelledby="drawerTitle" aria-modal="true" role="dialog" hidden>
+    <form id="drawerForm">
+      <div class="drawer-header">
+        <div>
+          <p class="eyebrow">名單資料</p>
+          <h2 id="drawerTitle">名單詳情</h2>
+        </div>
+        <button class="icon-button" id="closeDrawer" type="button" aria-label="關閉名單詳情">×</button>
+      </div>
+
+      <div class="drawer-body">
+        <section class="detail-section">
+          <h3>前台填寫資料</h3>
+          <dl class="detail-list" id="leadDetailList"></dl>
+        </section>
+
+        <section class="detail-section">
+          <h3>後台處理</h3>
+          <input type="hidden" id="drawerLeadId">
+          <label>目前狀態
+            <select id="drawerStatus" name="status"></select>
+          </label>
+          <label>負責人
+            <select id="drawerAssignee" name="assigned_to"></select>
+          </label>
+          <label>下次聯絡時間
+            <input id="drawerFollowUpAt" name="follow_up_at" type="datetime-local">
+          </label>
+          <label>內部聯絡紀錄
+            <textarea id="drawerInternalNote" name="internal_note" maxlength="1000" rows="8" placeholder="例如：已致電家長，想先安排週六體驗。"></textarea>
+          </label>
+          <p class="char-note"><span id="internalNoteCount">0</span> / 1000</p>
+        </section>
+
+        <section class="detail-section conversion-section">
+          <h3>正式學生資料</h3>
+          <p id="conversionHint">請先將招生狀態更新為「已報名」。</p>
+          <button id="convertStudentButton" type="button" disabled>轉為正式學生</button>
+        </section>
+      </div>
+
+      <div class="drawer-footer">
+        <button type="button" class="secondary-button" id="cancelDrawer">取消</button>
+        <button type="submit">儲存修改</button>
+      </div>
+    </form>
+  </aside>
+
+  <div class="modal-backdrop" id="conversionBackdrop" hidden></div>
+  <section class="conversion-modal" id="conversionModal" aria-labelledby="conversionTitle" aria-modal="true" role="dialog" hidden>
+    <form id="conversionForm">
+      <div class="drawer-header conversion-modal-header">
+        <div>
+          <p class="eyebrow">建立正式學生</p>
+          <h2 id="conversionTitle">轉為正式學生</h2>
+        </div>
+        <button class="icon-button" id="closeConversionModal" type="button" aria-label="關閉轉換表單">×</button>
+      </div>
+
+      <div class="drawer-body conversion-modal-body">
+        <input type="hidden" id="conversionLeadId">
+        <div class="form-grid">
+          <label>學生姓名
+            <input id="studentName" name="student_name" type="text" required>
+          </label>
+          <label>家長或主要聯絡人
+            <input id="guardianName" name="guardian_name" type="text" required>
+          </label>
+          <label>聯絡電話
+            <input id="studentPhone" name="student_phone" type="tel" required>
+          </label>
+          <label>Email
+            <input id="studentEmail" name="student_email" type="email">
+          </label>
+          <label>年級
+            <input id="studentGrade" name="student_grade" type="text" required>
+          </label>
+          <label>學校
+            <input id="studentSchool" name="student_school" type="text">
+          </label>
+          <label>招生顧問
+            <select id="studentAdvisor" name="assigned_advisor"></select>
+          </label>
+        </div>
+        <label>內部備註
+          <textarea id="studentInternalNote" name="student_internal_note" maxlength="1000" rows="6" placeholder="可記錄正式報名後的補充事項。"></textarea>
+        </label>
+        <p class="char-note"><span id="studentInternalNoteCount">0</span> / 1000</p>
+        <p class="form-error" id="conversionError" aria-live="polite"></p>
+        <div class="conversion-success" id="conversionSuccess" hidden></div>
+      </div>
+
+      <div class="drawer-footer conversion-modal-footer">
+        <button type="button" class="secondary-button" id="cancelConversion">取消</button>
+        <button type="submit">確認建立正式學生</button>
+      </div>
+    </form>
+  </section>
+
+  <div class="toast" id="liveMessage" aria-live="polite" aria-atomic="true"></div>
+
+  <script src="js/auth.js"></script>
+  <script src="js/leads.js?v=20260724-app-shell"></script>
+</body>
+</html>

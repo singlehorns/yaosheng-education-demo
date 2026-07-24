@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>珠心學苑＋招生與教務管理平台 Demo</title>
+  <meta name="description" content="自助式求職 Demo，完整展示補習班從招生諮詢、學生管理、老師課程班級到角色權限入口的操作流程。">
+  <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="css/design-tokens.css">
+  <link rel="stylesheet" href="css/components.css">
+  <link rel="stylesheet" href="css/demo-start.css">
+</head>
+<body>
+  <header class="demo-hero">
+    <nav class="demo-nav" aria-label="Demo 導覽">
+      <a class="demo-brand" href="index.html">
+        <img src="assets/favicon.svg" alt="" aria-hidden="true">
+        <span><strong>珠心學苑＋招生與教務管理平台 Demo</strong><small>自助式求職作品</small></span>
+      </a>
+      <div class="demo-nav-actions">
+        <a href="ailead-demo.html">招生表單</a>
+        <a href="login.html">手動登入</a>
+      </div>
+    </nav>
+
+    <section class="hero-grid">
+      <div>
+        <span class="eyebrow">SELF-GUIDED DEMO</span>
+        <h1>從招生諮詢到學生上課，<br>完整模擬補習班的數位管理流程</h1>
+        <p>
+          這是一個求職作品Demo，用來展示招生、學生、老師、課程、班級及角色權限之間的作業流程。
+          所有資料只會儲存在目前使用者的瀏覽器，不會傳送至真實補習班或正式資料庫。
+        </p>
+        <p class="warning">請勿輸入真實帳號、密碼或學生個資。</p>
+        <div class="hero-actions">
+          <button class="primary-button" id="seedButton" type="button">一鍵建立完整 Demo 資料</button>
+          <button class="secondary-button" id="resetButton" type="button">重置 Demo 資料</button>
+        </div>
+        <div class="status-box" id="demoStatus" aria-live="polite"></div>
+      </div>
+      <aside class="hero-panel" aria-label="操作提醒">
+        <h2>操作提醒</h2>
+        <p>每位訪客的Demo資料各自儲存在自己的瀏覽器中。</p>
+        <p>不同瀏覽器、裝置或無痕視窗會有不同資料。</p>
+        <p>按「重置Demo資料」即可恢復預設展示狀態。</p>
+      </aside>
+    </section>
+  </header>
+
+  <main>
+    <section class="section">
+      <div class="section-heading">
+        <span class="eyebrow">ROLES</span>
+        <h2>選擇角色快速體驗</h2>
+        <p>先建立 Demo 資料後，即可直接切換不同角色觀看對應權限。</p>
+      </div>
+      <div class="role-grid" id="roleCards">
+        <article class="role-card">
+          <h3>家長／學生</h3>
+          <ul>
+            <li>填寫課程需求</li>
+            <li>建立招生名單</li>
+          </ul>
+          <a class="card-button" href="ailead-demo.html">從招生表單開始</a>
+        </article>
+        <article class="role-card">
+          <h3>招生人員</h3>
+          <ul>
+            <li>查看新名單</li>
+            <li>指派負責人與更新聯絡狀態</li>
+            <li>設定追蹤時間並轉成學生</li>
+          </ul>
+          <button class="card-button" type="button" data-role-login="admissions">以招生人員身分體驗</button>
+        </article>
+        <article class="role-card">
+          <h3>系統管理員</h3>
+          <ul>
+            <li>管理學生、老師與課程</li>
+            <li>開設班級與指派老師</li>
+            <li>安排學生進入班級並管理Demo帳號</li>
+          </ul>
+          <button class="card-button" type="button" data-role-login="admin">以管理員身分體驗</button>
+        </article>
+        <article class="role-card">
+          <h3>老師</h3>
+          <ul>
+            <li>查看自己的班級</li>
+            <li>查看自己班級的學生</li>
+            <li>不可查看其他老師班級</li>
+          </ul>
+          <button class="card-button" type="button" data-role-login="teacher">以老師身分體驗</button>
+        </article>
+        <article class="role-card">
+          <h3>學生</h3>
+          <ul>
+            <li>查看自己的班級</li>
+            <li>查看授課老師與上課時間</li>
+            <li>不可查看其他學生資料</li>
+          </ul>
+          <button class="card-button" type="button" data-role-login="student">以學生身分體驗</button>
+        </article>
+      </div>
+      <p class="inline-message" id="roleMessage" aria-live="polite"></p>
+    </section>
+
+    <section class="section">
+      <div class="section-heading">
+        <span class="eyebrow">FLOW</span>
+        <h2>操作流程</h2>
+      </div>
+      <div class="flow-list">
+        <article>
+          <span>1</span>
+          <h3>家長／學生填寫課程諮詢表單</h3>
+          <p><strong>使用頁面：</strong>ailead-demo.html</p>
+          <p><strong>主要操作：</strong>填寫需求、年級與聯絡資料。</p>
+          <p><strong>預期結果：</strong>建立一筆新招生名單。</p>
+        </article>
+        <article>
+          <span>2</span>
+          <h3>招生人員查看名單並追蹤</h3>
+          <p><strong>使用頁面：</strong>leads.html</p>
+          <p><strong>主要操作：</strong>指派負責人、更新狀態、設定追蹤時間。</p>
+          <p><strong>預期結果：</strong>名單進入可管理的招生流程。</p>
+        </article>
+        <article>
+          <span>3</span>
+          <h3>已報名名單轉成正式學生</h3>
+          <p><strong>使用頁面：</strong>leads.html / students.html</p>
+          <p><strong>主要操作：</strong>將已報名名單建立為學生資料。</p>
+          <p><strong>預期結果：</strong>學生出現在學生管理清單。</p>
+        </article>
+        <article>
+          <span>4</span>
+          <h3>管理員建立老師、課程與班級</h3>
+          <p><strong>使用頁面：</strong>teachers.html / courses.html / classes.html</p>
+          <p><strong>主要操作：</strong>建立師資、課程級段與開班資料。</p>
+          <p><strong>預期結果：</strong>班級具備課程、老師、時間與容量。</p>
+        </article>
+        <article>
+          <span>5</span>
+          <h3>管理員將學生安排進班級</h3>
+          <p><strong>使用頁面：</strong>classes.html</p>
+          <p><strong>主要操作：</strong>在班級內加入正式學生。</p>
+          <p><strong>預期結果：</strong>學生產生 active 分班紀錄。</p>
+        </article>
+        <article>
+          <span>6</span>
+          <h3>老師與學生登入查看各自資料</h3>
+          <p><strong>使用頁面：</strong>teacher-portal.html / student-portal.html</p>
+          <p><strong>主要操作：</strong>以角色入口查看被授權資料。</p>
+          <p><strong>預期結果：</strong>老師只看自己的班，學生只看自己的課。</p>
+        </article>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="section-heading">
+        <span class="eyebrow">SUGGESTED ROUTE</span>
+        <h2>建議體驗順序</h2>
+      </div>
+      <div class="route-grid">
+        <a href="ailead-demo.html">第一步：從招生表單新增一筆諮詢資料</a>
+        <button type="button" data-role-login="admissions">第二步：切換招生人員查看新名單</button>
+        <button type="button" data-role-login="admin">第三步：切換管理員查看教務資料</button>
+        <button type="button" data-role-login="teacher">第四步：切換老師查看班級學生</button>
+        <button type="button" data-role-login="student">第五步：切換學生查看上課資訊</button>
+      </div>
+    </section>
+
+    <section class="section page-links">
+      <div class="section-heading">
+        <span class="eyebrow">PAGES</span>
+        <h2>完整頁面入口</h2>
+      </div>
+      <div>
+        <a href="login.html">Demo 登入</a>
+        <a href="dashboard.html">儀表板</a>
+        <a href="leads.html">招生管理</a>
+        <a href="students.html">學生管理</a>
+        <a href="teachers.html">老師管理</a>
+        <a href="courses.html">課程管理</a>
+        <a href="classes.html">班級管理</a>
+        <a href="accounts.html">帳號管理</a>
+        <a href="teacher-portal.html">老師入口</a>
+        <a href="student-portal.html">學生入口</a>
+        <a href="ailead-demo.html">公開招生表單</a>
+      </div>
+    </section>
+  </main>
+
+  <script src="js/auth.js"></script>
+  <script src="js/academic-data.js?v=20260724-academic-data"></script>
+  <script src="js/demo-start.js"></script>
+</body>
+</html>

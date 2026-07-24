@@ -1,0 +1,71 @@
+.portal-warning {
+  border-radius: var(--radius-lg) !important;
+  background: #fff !important;
+}
+
+.portal-panel {
+  gap: var(--space-5) !important;
+}
+
+.portal-card {
+  padding: var(--space-6) !important;
+}
+
+.portal-card h2 {
+  color: var(--text-primary) !important;
+  font-size: 20px !important;
+  line-height: 1.3 !important;
+  font-weight: 800 !important;
+}
+
+.portal-row {
+  border-radius: var(--radius-lg) !important;
+  background: #fbfdff !important;
+}
+
+.portal-row strong {
+  color: var(--brand-primary) !important;
+}
+
+.portal-kpi-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+  gap: var(--space-4);
+}
+
+.portal-kpi-grid div {
+  border-radius: var(--radius-lg);
+  padding: var(--space-5);
+  background: var(--bg-soft);
+}
+
+.portal-kpi-grid strong,
+.portal-kpi-grid span {
+  display: block;
+}
+
+.portal-kpi-grid strong {
+  color: var(--text-primary);
+  font-size: 28px;
+  line-height: 1;
+  font-weight: 800;
+}
+
+.portal-kpi-grid span {
+  color: var(--text-muted);
+  font-size: 14px;
+  font-weight: 700;
+}
+
+.student-welcome {
+  min-height: 220px;
+  display: grid;
+  align-items: center;
+  background: #fff !important;
+}
+
+.student-welcome h2 {
+  font-size: 24px !important;
+  line-height: 1.25 !important;
+  color: var(--text-primary) !important;
+}

@@ -1,0 +1,27 @@
+.student-drawer {
+  width: min(680px, 100%);
+}
+
+.class-pill {
+  display: inline-flex;
+  align-items: center;
+  min-height: 28px;
+  padding: 4px 10px;
+  color: #92400e;
+  background: #fef3c7;
+  border-radius: 999px;
+  font-size: .82rem;
+  font-weight: 950;
+  white-space: nowrap;
+}
+
+.student-status-active { color: #166534; background: #dcfce7; }
+.student-status-paused { color: #92400e; background: #fef3c7; }
+.student-status-graduated { color: #075985; background: #e0f2fe; }
+.student-status-withdrawn { color: #991b1b; background: #fee2e2; }
+
+@media (max-width: 680px) {
+  .student-drawer {
+    width: 100%;
+  }
+}

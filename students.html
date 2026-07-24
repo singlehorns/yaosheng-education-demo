@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>珠心學苑＋學生管理 Demo</title>
+  <meta name="description" content="珠心學苑＋學生管理 Demo，使用目前瀏覽器 localStorage 展示正式學生管理流程。">
+  <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="css/admin.css">
+  <link rel="stylesheet" href="css/students.css">
+  <link rel="stylesheet" href="css/design-tokens.css">
+  <link rel="stylesheet" href="css/layout.css">
+  <link rel="stylesheet" href="css/components.css">
+  <link rel="stylesheet" href="css/admin-theme.css">
+</head>
+<body>
+  <div class="admin-shell">
+    <aside class="sidebar" id="sidebar">
+      <a class="sidebar-brand" href="students.html" aria-label="珠心學苑＋學生管理 Demo 首頁">
+        <strong>珠心學苑＋</strong>
+        <span>學生管理 Demo</span>
+      </a>
+      <nav class="sidebar-nav" aria-label="學生管理選單">
+        <a href="#dashboard">儀表板</a>
+        <a href="leads.html">招生名單</a>
+        <a class="is-active" href="students.html">學生管理</a>
+        <a href="teachers.html">老師管理</a>
+        <a href="courses.html">課程管理</a>
+        <a href="classes.html">班級管理</a>
+        <button type="button" data-coming-soon>帳號管理<span>下一階段</span></button>
+        <a href="ailead-demo.html">回到招生首頁</a>
+      </nav>
+    </aside>
+
+    <div class="admin-content">
+      <header class="topbar">
+        <button class="menu-toggle" id="menuToggle" type="button" aria-controls="sidebar" aria-expanded="false">選單</button>
+        <div>
+          <p class="eyebrow">Student Management</p>
+          <h1>珠心學苑＋學生管理 Demo</h1>
+          <p class="demo-notice">本頁為求職作品展示。資料僅儲存在目前瀏覽器，不包含正式登入、正式資料庫或真實個資安全機制。</p>
+        </div>
+      </header>
+
+      <main class="admin-main" id="dashboard">
+        <section class="metrics" aria-label="學生統計">
+          <article>
+            <span id="totalStudents">0</span>
+            <p>全部學生</p>
+          </article>
+          <article>
+            <span id="activeStudents">0</span>
+            <p>在學學生</p>
+          </article>
+          <article>
+            <span id="newThisMonth">0</span>
+            <p>本月新生</p>
+          </article>
+          <article>
+            <span id="unassignedClass">0</span>
+            <p>尚未分班</p>
+          </article>
+        </section>
+
+        <section class="panel" aria-labelledby="studentPanelTitle">
+          <div class="panel-heading">
+            <div>
+              <p class="eyebrow">Students</p>
+              <h2 id="studentPanelTitle">正式學生</h2>
+            </div>
+            <div class="panel-actions">
+              <button id="refreshButton" type="button">重新整理</button>
+              <button id="exportCsv" type="button">匯出 CSV</button>
+            </div>
+          </div>
+
+          <div class="toolbar" aria-label="學生搜尋與篩選">
+            <label>關鍵字搜尋
+              <input type="search" id="searchInput" placeholder="學生編號、姓名、家長、電話、Email、學校、原名單編號">
+            </label>
+            <label>年級
+              <select id="gradeFilter">
+                <option value="">全部年級</option>
+              </select>
+            </label>
+            <label>學生狀態
+              <select id="statusFilter">
+                <option value="">全部狀態</option>
+              </select>
+            </label>
+            <label>招生顧問
+              <select id="advisorFilter">
+                <option value="">全部顧問</option>
+              </select>
+            </label>
+            <button id="clearFilters" type="button">清除篩選</button>
+          </div>
+
+          <p class="result-count" id="resultCount" aria-live="polite">目前顯示 0 筆</p>
+
+          <div class="table-wrap">
+            <table aria-label="正式學生列表">
+              <caption>正式學生資料，可查看詳情、修改狀態或刪除 Demo 學生。</caption>
+              <thead>
+                <tr>
+                  <th>學生編號</th>
+                  <th>建立日期</th>
+                  <th>學生姓名</th>
+                  <th>家長或聯絡人</th>
+                  <th>年級</th>
+                  <th>學校</th>
+                  <th>電話</th>
+                  <th>招生顧問</th>
+                  <th>目前班級</th>
+                  <th>分班狀態</th>
+                  <th>學生狀態</th>
+                  <th>操作</th>
+                </tr>
+              </thead>
+              <tbody id="studentTable"></tbody>
+            </table>
+          </div>
+
+          <div id="emptyState" class="empty-state" hidden>
+            <h2>目前沒有正式學生</h2>
+            <p>請先到招生名單，將已報名名單轉為正式學生。</p>
+            <a href="leads.html">前往招生名單</a>
+          </div>
+
+          <div id="noResultState" class="empty-state" hidden>
+            <h2>找不到符合條件的學生。</h2>
+            <p>請調整關鍵字或篩選條件後再試一次。</p>
+          </div>
+        </section>
+      </main>
+    </div>
+  </div>
+
+  <div class="drawer-backdrop" id="drawerBackdrop" hidden></div>
+  <aside class="lead-drawer student-drawer" id="studentDrawer" aria-labelledby="drawerTitle" aria-modal="true" role="dialog" hidden>
+    <form id="studentForm">
+      <div class="drawer-header">
+        <div>
+          <p class="eyebrow">Student Detail</p>
+          <h2 id="drawerTitle">學生詳情</h2>
+        </div>
+        <button class="icon-button" id="closeDrawer" type="button" aria-label="關閉學生詳情">×</button>
+      </div>
+
+      <div class="drawer-body">
+        <section class="detail-section">
+          <h3>學生資料</h3>
+          <dl class="detail-list" id="studentDetailList"></dl>
+        </section>
+
+        <section class="detail-section">
+          <h3>目前課程與班級</h3>
+          <div class="detail-list" id="studentClassList"></div>
+        </section>
+
+        <section class="detail-section">
+          <h3>可修改資料</h3>
+          <input type="hidden" id="drawerStudentId">
+          <div class="form-grid">
+            <label>學生姓名
+              <input id="drawerStudentName" name="student_name" type="text" required>
+            </label>
+            <label>家長或聯絡人
+              <input id="drawerGuardianName" name="guardian_name" type="text" required>
+            </label>
+            <label>電話
+              <input id="drawerPhone" name="phone" type="tel" required>
+            </label>
+            <label>Email
+              <input id="drawerEmail" name="email" type="email">
+            </label>
+            <label>年級
+              <input id="drawerGrade" name="grade" type="text" required>
+            </label>
+            <label>學校
+              <input id="drawerSchool" name="school" type="text">
+            </label>
+            <label>招生顧問
+              <select id="drawerAdvisor" name="assigned_advisor"></select>
+            </label>
+            <label>學生狀態
+              <select id="drawerStudentStatus" name="student_status"></select>
+            </label>
+          </div>
+          <label>內部備註
+            <textarea id="drawerInternalNote" name="internal_note" maxlength="1000" rows="8"></textarea>
+          </label>
+          <p class="char-note"><span id="internalNoteCount">0</span> / 1000</p>
+          <p class="form-error" id="formError" aria-live="polite"></p>
+        </section>
+      </div>
+
+      <div class="drawer-footer">
+        <button type="button" class="secondary-button" id="cancelDrawer">取消</button>
+        <button type="submit">儲存修改</button>
+      </div>
+    </form>
+  </aside>
+
+  <div class="toast" id="liveMessage" aria-live="polite" aria-atomic="true"></div>
+
+  <script src="js/auth.js"></script>
+  <script src="js/academic-data.js?v=20260724-academic-data"></script>
+  <script src="js/students.js?v=20260724-auth"></script>
+</body>
+</html>
